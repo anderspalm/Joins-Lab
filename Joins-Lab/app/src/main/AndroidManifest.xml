@@ -16,6 +16,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".Employee" />
+        <activity android:name=".DBHelper2"></activity>
     </application>
 
 </manifest>

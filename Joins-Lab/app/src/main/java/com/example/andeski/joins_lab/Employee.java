@@ -10,12 +10,12 @@ public class Employee extends AppCompatActivity {
     private String mSecondName;
     private String mYOB;
     private String mCity;
-//    private String mId;
+    private Integer mId;
 
     public Employee(){}
 
-    public Employee( Integer ssn, String firstName, String secondName, String yOB, String city){
-//        mId = _id;
+    public Employee( Integer _id, Integer ssn, String firstName, String secondName, String yOB, String city){
+        mId = _id;
         mSSN = ssn;
         mFirstName = firstName;
         mSecondName = secondName;

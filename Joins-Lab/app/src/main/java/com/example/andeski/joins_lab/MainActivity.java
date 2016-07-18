@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         mAddData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DBHelper helper = DBHelper.getInstance(MainActivity.this);
+                DBHelper2 helper = DBHelper2.getInstance(MainActivity.this);
                 helper.removeCurrentTables();
 
 //                helper.insertEmployee(new Employee("1","123-04-5678","John","Smith","1973","NY"));
@@ -54,14 +54,14 @@ public class MainActivity extends AppCompatActivity {
 //                helper.insertEmployee(new Employee("7","123-04-5684","William","Newey","1995","Boston"));
 //                helper.insertEmployee(new Employee("8","123-04-5685","Melony","Smith","1970","Chicago"));
 
-                helper.insertEmployee(new Employee(123-04-5678, "John", "Smith", "1973", "NY"));
-                helper.insertEmployee(new Employee(123-04-5679, "David", "McWill", "1982", "Seattle"));
-                helper.insertEmployee(new Employee(123-04-5680, "Katerina", "Wise", "1973", "Boston"));
-                helper.insertEmployee(new Employee(123-04-5681, "Donald", "Lee", "1992", "London"));
-                helper.insertEmployee(new Employee(123-04-5682, "Gary", "Henwood", "1987", "Las Vegas"));
-                helper.insertEmployee(new Employee(123-04-5683, "Anthony", "Bright", "1963", "Seattle"));
-                helper.insertEmployee(new Employee(123-04-5684, "William", "Newey", "1995", "Boston"));
-                helper.insertEmployee(new Employee(123-04-5685, "Melony", "Smith", "1970", "Chicago"));
+                helper.insertEmployee(new Employee(1,123-04-5678, "John", "Smith", "1973", "NY"));
+                helper.insertEmployee(new Employee(2, 123-04-5679, "David", "McWill", "1982", "Seattle"));
+                helper.insertEmployee(new Employee(3, 123-04-5680, "Katerina", "Wise", "1973", "Boston"));
+                helper.insertEmployee(new Employee(4, 123-04-5681, "Donald", "Lee", "1992", "London"));
+                helper.insertEmployee(new Employee(5, 123-04-5682, "Gary", "Henwood", "1987", "Las Vegas"));
+                helper.insertEmployee(new Employee(6, 123-04-5683, "Anthony", "Bright", "1963", "Seattle"));
+                helper.insertEmployee(new Employee(7, 123-04-5684, "William", "Newey", "1995", "Boston"));
+                helper.insertEmployee(new Employee(8, 123-04-5685, "Melony", "Smith", "1970", "Chicago"));
 
                 helper.insertJobs(new Job( 123-04-5678,"Fuzz", "60", "1"));
                 helper.insertJobs(new Job( 123-04-5679,"GA", "70", "2"));
@@ -120,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
                             temp.setmYOB(mYOB.getText().toString().trim());
                             temp.setmCity(mCity.getText().toString().trim());
 
-                            DBHelper new_helper = DBHelper.getInstance(MainActivity.this);
+                            DBHelper2 new_helper = DBHelper2.getInstance(MainActivity.this);
                             new_helper.insertEmployee(temp);
                             Toast.makeText(MainActivity.this, "You Successfully Added " + temp.getmFirstName(), Toast.LENGTH_LONG).show();
 
@@ -137,12 +137,28 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 //              Toast.makeText(MainActivity.this, "Success... open", Toast.LENGTH_SHORT).show();
-                Cursor cursor = DBHelper.getInstance(MainActivity.this).findSimilarWorkers();
+                Cursor cursor = DBHelper2.getInstance(MainActivity.this).findSimilarWorkers();
                 displayNames(cursor);
             }
         });
 
         mBoston = (Button) findViewById(R.id.companies_in_Boston);
+        mBoston.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                Cursor cursor = DBHelper2.getInstance(MainActivity.this).bostonCompanies();
+                displayNames(cursor);
+            }
+        });
+
+        mHighSalary = (Button) findViewById(R.id.company_w_h_s);
+        mHighSalary.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
     }
 
 
@@ -164,8 +180,8 @@ public class MainActivity extends AppCompatActivity {
                     public void bindView(View view, Context context, Cursor cursor) {
                         TextView fullName = (TextView) view.findViewById(R.id.list_item);
 
-                        String first = cursor.getString(cursor.getColumnIndex(DBHelper.EMPLOYEE_FIRST_NAME));
-                        String second = cursor.getString(cursor.getColumnIndex(DBHelper.EMPLOYEE_SECOND_NAME));
+                        String first = cursor.getString(cursor.getColumnIndex(DBHelper2.EMPLOYEE_FIRST_NAME));
+                        String second = cursor.getString(cursor.getColumnIndex(DBHelper2.EMPLOYEE_SECOND_NAME));
 
                         fullName.setText(first + " " + second);
                         Toast.makeText(MainActivity.this, "Success... set the view", Toast.LENGTH_SHORT).show();
