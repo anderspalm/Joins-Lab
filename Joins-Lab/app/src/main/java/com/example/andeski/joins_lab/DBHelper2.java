@@ -59,7 +59,7 @@ public class DBHelper2 extends SQLiteOpenHelper {
             db.execSQL("CREATE TABLE " + JOB_TABLE + " (" +
                     JOB_SSN + " INTEGER NOT NULL, " +
                     JOB_COMP + " TEXT, " +
-                    JOB_SAL + " Text, " +
+                    JOB_SAL + " INTEGER, " +
                     JOB_EXP + " TEXT, " +
                     "FOREIGN KEY(" + JOB_SSN + ") " +
                     "REFERENCES " + EMPLOYEE_TABLE + "(" + EMPLOYEE_SSN + "))");
@@ -131,6 +131,17 @@ public class DBHelper2 extends SQLiteOpenHelper {
         return cursor;
     }
 
+    public Cursor highestSalary() {
+        SQLiteDatabase db = getReadableDatabase();
+        String query = "SELECT " + EMPLOYEE_ID + "," + JOB_SAL + ", " + JOB_COMP + " FROM "
+                + JOB_TABLE
+                + " JOIN " + EMPLOYEE_TABLE
+                + " ON " + JOB_TABLE + "." + JOB_SSN + " = " + EMPLOYEE_TABLE + "." + EMPLOYEE_SSN
+                + " WHERE " + JOB_SAL + " = ( SELECT MAX(" + JOB_SAL + ") FROM " + JOB_TABLE + ")";
+        Cursor cursor = db.rawQuery(query,null);
+        return cursor;
+    }
+
         //    SQL lite methods below
     public ArrayList<String> getAllEmployees() {
         // This works with my code in Main activity instead of the two methods above, why?????????????????????????????
@@ -145,6 +156,8 @@ public class DBHelper2 extends SQLiteOpenHelper {
                 }
                return temp;
     }
+
+
 
 
 

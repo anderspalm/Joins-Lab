@@ -7,10 +7,10 @@ public class Job {
 
     private Integer mSSN;
     private String mCompany;
-    private String mSalary;
+    private Integer mSalary;
     private String mExperience;
 
-    public Job(Integer ssn, String company, String salary, String experience){
+    public Job(Integer ssn, String company, Integer salary, String experience){
         mCompany = company;
         mExperience = experience;
         mSalary = salary;
@@ -33,11 +33,11 @@ public class Job {
         this.mCompany = mCompany;
     }
 
-    public String getmSalary() {
+    public Integer getmSalary() {
         return mSalary;
     }
 
-    public void setmSalary(String mSalary) {
+    public void setmSalary(Integer mSalary) {
         this.mSalary = mSalary;
     }
 
