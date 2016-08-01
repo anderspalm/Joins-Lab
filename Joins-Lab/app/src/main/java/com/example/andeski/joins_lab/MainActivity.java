@@ -45,14 +45,14 @@ public class MainActivity extends AppCompatActivity {
                 DBHelper2 helper = DBHelper2.getInstance(MainActivity.this);
                 helper.removeCurrentTables();
 
-                helper.insertEmployee(new Employee(1,123-04-5678, "John", "Smith", "1973", "NY"));
-                helper.insertEmployee(new Employee(2, 123-04-5679, "David", "McWill", "1982", "Seattle"));
-                helper.insertEmployee(new Employee(3, 123-04-5680, "Katerina", "Wise", "1973", "Boston"));
-                helper.insertEmployee(new Employee(4, 123-04-5681, "Donald", "Lee", "1992", "London"));
-                helper.insertEmployee(new Employee(5, 123-04-5682, "Gary", "Henwood", "1987", "Las Vegas"));
-                helper.insertEmployee(new Employee(6, 123-04-5683, "Anthony", "Bright", "1963", "Seattle"));
-                helper.insertEmployee(new Employee(7, 123-04-5684, "William", "Newey", "1995", "Boston"));
-                helper.insertEmployee(new Employee(8, 123-04-5685, "Melony", "Smith", "1970", "Chicago"));
+//                helper.insertEmployee(new Employee(1,123-04-5678, "John", "Smith", "1973", "NY"));
+//                helper.insertEmployee(new Employee(2, 123-04-5679, "David", "McWill", "1982", "Seattle"));
+//                helper.insertEmployee(new Employee(3, 123-04-5680, "Katerina", "Wise", "1973", "Boston"));
+//                helper.insertEmployee(new Employee(4, 123-04-5681, "Donald", "Lee", "1992", "London"));
+//                helper.insertEmployee(new Employee(5, 123-04-5682, "Gary", "Henwood", "1987", "Las Vegas"));
+//                helper.insertEmployee(new Employee(6, 123-04-5683, "Anthony", "Bright", "1963", "Seattle"));
+//                helper.insertEmployee(new Employee(7, 123-04-5684, "William", "Newey", "1995", "Boston"));
+//                helper.insertEmployee(new Employee(8, 123-04-5685, "Melony", "Smith", "1970", "Chicago"));
 
                 helper.insertJobs(new Job( 123-04-5678,"Fuzz", 60, "1"));
                 helper.insertJobs(new Job( 123-04-5679,"GA", 70, "2"));
